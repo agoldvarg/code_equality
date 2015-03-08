@@ -9,11 +9,11 @@ class SubjectsController < ApplicationController
   end
 
   def new
-    @subject = Subject.new
+    @subject = current_user.subjects.build
   end
 
   def create
-    @subject = Subject.new(subject_params)
+    @subject = current_user.subjects.build(subject_params)
 
     if @subject.save
       redirect_to @subject, notice: "Successfully added Individual"
