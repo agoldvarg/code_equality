@@ -1,0 +1,6 @@
+%h1= @subject.name
+%p= @subject.bio
+
+= link_to 'Back', root_path
+= link_to 'Edit', edit_subject_path
+= link_to 'Delete', subject_path, method: :delete, data: { confirm: 'Are you sure?' }

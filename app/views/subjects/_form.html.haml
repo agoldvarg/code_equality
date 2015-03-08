@@ -1,0 +1,14 @@
+= simple_form_for @subject, html: { multipart: true } do |f|
+  - if @subject.errors.any?
+    #errors
+      %h2
+      = pluralize(@subject.errors.count, "error")
+      prevented this individual from saving
+      %ul
+        - @subject.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.input :name, input_html: { class: 'form-control' }
+
+  = f.button :submit, class: 'btn btn-primary'
