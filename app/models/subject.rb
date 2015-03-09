@@ -1,4 +1,5 @@
 class Subject < ActiveRecord::Base
+  acts_as_votable
   belongs_to  :user
 
   def last_name

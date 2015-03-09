@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
-  before_action :find_subject, only: [:show, :edit, :update, :destroy]
+  before_action :find_subject, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @subjects = Subject.all.sort { |a, b| a.last_name <=> b.last_name }
@@ -36,6 +37,11 @@ class SubjectsController < ApplicationController
   def destroy
     @subject.destroy
     redirect_to root_path
+  end
+
+  def upvote
+    @subject.upvote_by current_user
+    redirect_to :back
   end
 
   private
