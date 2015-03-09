@@ -1,12 +1,17 @@
-= image_tag @subject.image.url(:medium)
-%h1= @subject.name
-%p= @subject.bio
-%p
-Submitted by
-= @subject.user.name
-
-%br/
-
-= link_to 'Back', root_path
-= link_to 'Edit', edit_subject_path
-= link_to 'Delete', subject_path, method: :delete, data: { confirm: 'Are you sure?' }
+#subject_show.row
+  .col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading.subject_image
+        = image_tag @subject.image.url
+      .panel-body
+        %h1= @subject.name
+        %p.bio= @subject.bio
+      .panel-footer
+        .row
+          .col-md-6
+            %p
+          .col-md-6
+            .btn-group.pull-right
+              - if user_signed_in?
+                = link_to 'Edit', edit_subject_path, class: "btn btn-default"
+                = link_to 'Delete', subject_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
