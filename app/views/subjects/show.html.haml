@@ -17,4 +17,4 @@
                   = @subject.get_upvotes.size
               - if user_signed_in?
                 = link_to 'Edit', edit_subject_path, class: "btn btn-default"
-                = link_to 'Delete', subject_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+                / = link_to 'Delete', subject_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
